@@ -1,6 +1,21 @@
+
+
+
+
+import "slick-carousel/slick/slick.css";
+
+import "slick-carousel/slick/slick-theme.css";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+
 import "./globals.css";
+import { Button } from "@/components/ui/button";
+import Navbar from "@/components/Navbar/Navbar";
+import { Toaster } from "react-hot-toast";
+import CartContextProvider from "@/components/context/cartContext";
+import WishlistContextProvider from "@/components/context/wishlistContext";
+import { SessionProvider } from "next-auth/react";
+import Provider from "@/components/Provider/Provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +42,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+  
+            <Provider>
+              {children}
+            </Provider>
+
       </body>
     </html>
   );
